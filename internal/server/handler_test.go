@@ -13,10 +13,10 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	community "github.com/Decentr-net/decentr/x/community/types"
+	community "github.com/TessorNetwork/furya/x/community/types"
 
-	"github.com/Decentr-net/theseus/internal/storage"
-	"github.com/Decentr-net/theseus/internal/storage/mock"
+	"github.com/TessorNetwork/theseus/internal/storage"
+	"github.com/TessorNetwork/theseus/internal/storage/mock"
 )
 
 func Test_listPosts(t *testing.T) {
@@ -323,7 +323,7 @@ func Test_getProfileStats(t *testing.T) {
 	assert.JSONEq(t, `{"postsCount": 1, "stats":[{ "date":"1970-01-01", "value":1.000001 }]}`, w.Body.String())
 }
 
-func Test_getDecentrStats(t *testing.T) {
+func Test_getFuryaStats(t *testing.T) {
 	r, err := http.NewRequest(http.MethodGet, "/v1/profiles/stats", nil)
 	require.NoError(t, err)
 
@@ -331,14 +331,14 @@ func Test_getDecentrStats(t *testing.T) {
 	defer ctrl.Finish()
 	srv := mock.NewMockStorage(ctrl)
 
-	srv.EXPECT().GetDecentrStats(gomock.Any()).Return(&storage.DecentrStats{
+	srv.EXPECT().GetFuryaStats(gomock.Any()).Return(&storage.FuryaStats{
 		ADV: 1010000,
 		DDV: 2000000,
 	}, nil)
 
 	router := chi.NewRouter()
 	s := server{s: srv}
-	router.Get("/v1/profiles/stats", s.getDecentrStats)
+	router.Get("/v1/profiles/stats", s.getFuryaStats)
 
 	w := httptest.NewRecorder()
 	router.ServeHTTP(w, r)
@@ -355,7 +355,7 @@ func Test_getDDVStats(t *testing.T) {
 	defer ctrl.Finish()
 	srv := mock.NewMockStorage(ctrl)
 
-	srv.EXPECT().GetDecentrStats(gomock.Any()).Return(&storage.DecentrStats{
+	srv.EXPECT().GetFuryaStats(gomock.Any()).Return(&storage.FuryaStats{
 		ADV: 5000,
 		DDV: 10000,
 	}, nil)

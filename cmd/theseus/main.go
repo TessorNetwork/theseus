@@ -20,11 +20,11 @@ import (
 	"github.com/sirupsen/logrus"
 	"golang.org/x/sync/errgroup"
 
-	"github.com/Decentr-net/go-api/health"
-	"github.com/Decentr-net/logrus/sentry"
+	"github.com/TessorNetwork/go-api/health"
+	"github.com/TessorNetwork/logrus/sentry"
 
-	"github.com/Decentr-net/theseus/internal/server"
-	"github.com/Decentr-net/theseus/internal/storage/postgres"
+	"github.com/TessorNetwork/theseus/internal/server"
+	"github.com/TessorNetwork/theseus/internal/storage/postgres"
 )
 
 // nolint:lll,gochecknoglobals

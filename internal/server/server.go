@@ -21,10 +21,10 @@ import (
 	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/cors"
 
-	"github.com/Decentr-net/go-api"
+	"github.com/TessorNetwork/go-api"
 
-	mm "github.com/Decentr-net/theseus/internal/middleware"
-	"github.com/Decentr-net/theseus/internal/storage"
+	mm "github.com/TessorNetwork/theseus/internal/middleware"
+	"github.com/TessorNetwork/theseus/internal/storage"
 )
 
 //go:generate swagger generate spec -t swagger -m -c . -o ../../static/swagger.json
@@ -56,7 +56,7 @@ func SetupRouter(s storage.Storage, r chi.Router, timeout time.Duration) {
 		r.Get("/posts", srv.listPosts)
 		r.Get("/posts/{owner}/{uuid}", srv.getPost)
 		r.Get("/posts/{slug}", srv.getSharePostBySlug)
-		r.Get("/profiles/stats", mm.Cached(10*time.Minute, srv.getDecentrStats))
+		r.Get("/profiles/stats", mm.Cached(10*time.Minute, srv.getFuryaStats))
 		r.Get("/ddv/stats", mm.Cached(10*time.Minute, srv.getDDVStats))
 		r.Get("/profiles/{address}/stats", srv.getProfileStats)
 	})

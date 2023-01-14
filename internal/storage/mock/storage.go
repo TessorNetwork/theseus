@@ -6,8 +6,8 @@ package mock
 
 import (
 	context "context"
-	types "github.com/Decentr-net/decentr/x/community/types"
-	storage "github.com/Decentr-net/theseus/internal/storage"
+	types "github.com/TessorNetwork/furya/x/community/types"
+	storage "github.com/TessorNetwork/theseus/internal/storage"
 	gomock "github.com/golang/mock/gomock"
 	reflect "reflect"
 	time "time"
@@ -282,19 +282,19 @@ func (mr *MockStorageMockRecorder) GetPostStats(ctx interface{}, id ...interface
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPostStats", reflect.TypeOf((*MockStorage)(nil).GetPostStats), varargs...)
 }
 
-// GetDecentrStats mocks base method
-func (m *MockStorage) GetDecentrStats(ctx context.Context) (*storage.DecentrStats, error) {
+// GetFuryaStats mocks base method
+func (m *MockStorage) GetFuryaStats(ctx context.Context) (*storage.FuryaStats, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetDecentrStats", ctx)
-	ret0, _ := ret[0].(*storage.DecentrStats)
+	ret := m.ctrl.Call(m, "GetFuryaStats", ctx)
+	ret0, _ := ret[0].(*storage.FuryaStats)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// GetDecentrStats indicates an expected call of GetDecentrStats
-func (mr *MockStorageMockRecorder) GetDecentrStats(ctx interface{}) *gomock.Call {
+// GetFuryaStats indicates an expected call of GetFuryaStats
+func (mr *MockStorageMockRecorder) GetFuryaStats(ctx interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDecentrStats", reflect.TypeOf((*MockStorage)(nil).GetDecentrStats), ctx)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetFuryaStats", reflect.TypeOf((*MockStorage)(nil).GetFuryaStats), ctx)
 }
 
 // GetDDVStats mocks base method

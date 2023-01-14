@@ -6,7 +6,7 @@ import (
 	"net/http/httptest"
 	"time"
 
-	"github.com/Decentr-net/theseus/internal/middleware/memory"
+	"github.com/TessorNetwork/theseus/internal/middleware/memory"
 )
 
 // Storage ...

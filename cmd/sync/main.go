@@ -20,14 +20,14 @@ import (
 	"github.com/sirupsen/logrus"
 	"golang.org/x/sync/errgroup"
 
-	"github.com/Decentr-net/ariadne"
-	"github.com/Decentr-net/go-api/health"
-	"github.com/Decentr-net/logrus/sentry"
+	"github.com/TessorNetwork/ariadne"
+	"github.com/TessorNetwork/go-api/health"
+	"github.com/TessorNetwork/logrus/sentry"
 
-	"github.com/Decentr-net/theseus/internal/consumer"
-	"github.com/Decentr-net/theseus/internal/consumer/blockchain"
-	"github.com/Decentr-net/theseus/internal/storage"
-	"github.com/Decentr-net/theseus/internal/storage/postgres"
+	"github.com/TessorNetwork/theseus/internal/consumer"
+	"github.com/TessorNetwork/theseus/internal/consumer/blockchain"
+	"github.com/TessorNetwork/theseus/internal/storage"
+	"github.com/TessorNetwork/theseus/internal/storage/postgres"
 )
 
 // nolint:lll,gochecknoglobals
@@ -40,7 +40,7 @@ var opts = struct {
 	PostgresMaxIdleConnections int    `long:"postgres.max_idle_connections" env:"POSTGRES_MAX_IDLE_CONNECTIONS" default:"5" description:"postgres maximal idle connections count"`
 	PostgresMigrations         string `long:"postgres.migrations" env:"POSTGRES_MIGRATIONS" default:"migrations/postgres" description:"postgres migrations directory"`
 
-	BlockchainNode                   string        `long:"blockchain.node" env:"BLOCKCHAIN_NODE" default:"zeus.testnet.decentr.xyz:9090" description:"decentr node address"`
+	BlockchainNode                   string        `long:"blockchain.node" env:"BLOCKCHAIN_NODE" default:"zeus.testnet.furya.xyz:9090" description:"furya node address"`
 	BlockchainTimeout                time.Duration `long:"blockchain.timeout" env:"BLOCKCHAIN_TIMEOUT" default:"5s" description:"timeout for requests to blockchain node"`
 	BlockchainRetryInterval          time.Duration `long:"blockchain.retry_interval" env:"BLOCKCHAIN_RETRY_INTERVAL" default:"2s" description:"interval to be waited on error before retry"`
 	BlockchainLastBlockRetryInterval time.Duration `long:"blockchain.last_block_retry_interval" env:"BLOCKCHAIN_LAST_BLOCK_RETRY_INTERVAL" default:"1s" description:"duration to be waited when new block isn't produced before retry"`

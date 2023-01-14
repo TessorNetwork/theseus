@@ -11,16 +11,16 @@ import (
 
 	"github.com/go-chi/chi"
 
-	community "github.com/Decentr-net/decentr/x/community/types"
-	"github.com/Decentr-net/go-api"
-	"github.com/Decentr-net/theseus/internal/storage"
+	community "github.com/TessorNetwork/furya/x/community/types"
+	"github.com/TessorNetwork/go-api"
+	"github.com/TessorNetwork/theseus/internal/storage"
 )
 
 var (
 	errInvalidRequest = errors.New("invalid request")
 
 	topPostID = storage.PostID{
-		Owner: "decentr1jh0hj2700t289wdwy4pfklffwl4zjvf0zz80ld",
+		Owner: "furya1jh0hj2700t289wdwy4pfklffwl4zjvf0zz80ld",
 		UUID:  "1e20d30a-7873-49d2-91c2-22b6036c24fe",
 	}
 )
@@ -61,17 +61,17 @@ func (s server) listPosts(w http.ResponseWriter, r *http.Request) {
 	//   description: filters posts by owner
 	//   in: query
 	//   required: false
-	//   example: decentr1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz
+	//   example: furya1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz
 	// - name: likedBy
 	//   description: filters posts by one who liked its
 	//   in: query
 	//   required: false
-	//   example: decentr1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz
+	//   example: furya1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz
 	// - name: followedBy
 	//   in: query
 	//   description: filters post by owners who followed by followedBy
 	//   required: false
-	//   example: decentr1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz
+	//   example: furya1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz
 	// - name: limit
 	//   description: limits count of returned posts
 	//   in: query
@@ -83,7 +83,7 @@ func (s server) listPosts(w http.ResponseWriter, r *http.Request) {
 	//   description: sets not-including bound for list by post id(`owner/uuid`)
 	//   in: query
 	//   required: false
-	//   example: decentr1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz/df870e39-6fcb-11eb-9461-0242ac11000b
+	//   example: furya1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz/df870e39-6fcb-11eb-9461-0242ac11000b
 	// - name: from
 	//   description: sets lower datetime bound for list
 	//   in: query
@@ -98,7 +98,7 @@ func (s server) listPosts(w http.ResponseWriter, r *http.Request) {
 	//   in: query
 	//   description: adds liked flag to response
 	//   required: false
-	//   example: decentr1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz
+	//   example: furya1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz
 	// - name: excludeNegative
 	//   in: query
 	//   description: excludes posts with negative pdv
@@ -239,7 +239,7 @@ func (s server) getPost(w http.ResponseWriter, r *http.Request) {
 	//   in: query
 	//   description: adds liked flag to response
 	//   required: false
-	//   example: decentr1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz
+	//   example: furya1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz
 	// responses:
 	//   '200':
 	//     description: Post
@@ -377,7 +377,7 @@ func (s server) getDDVStats(w http.ResponseWriter, r *http.Request) {
 	//     schema:
 	//       "$ref": "#/definitions/Error"
 
-	totalStats, err := s.s.GetDecentrStats(r.Context())
+	totalStats, err := s.s.GetFuryaStats(r.Context())
 	if err != nil {
 		api.WriteInternalErrorf(r.Context(), w, "failed to get total stats: %s", err.Error())
 		return
@@ -417,10 +417,10 @@ func transformStatsAsGrowth(stats []*storage.DDVStatsItem, total int64) {
 	}
 }
 
-func (s server) getDecentrStats(w http.ResponseWriter, r *http.Request) {
-	// swagger:operation GET /profiles/stats Profiles GetDecentrStats
+func (s server) getFuryaStats(w http.ResponseWriter, r *http.Request) {
+	// swagger:operation GET /profiles/stats Profiles GetFuryaStats
 	//
-	// Returns decentr stats.
+	// Returns furya stats.
 	//
 	// ---
 	// produces:
@@ -429,19 +429,19 @@ func (s server) getDecentrStats(w http.ResponseWriter, r *http.Request) {
 	//   '200':
 	//     description: Stats
 	//     schema:
-	//       "$ref": "#/definitions/DecentrStats"
+	//       "$ref": "#/definitions/FuryaStats"
 	//   '500':
 	//     description: internal server error
 	//     schema:
 	//       "$ref": "#/definitions/Error"
 
-	stats, err := s.s.GetDecentrStats(r.Context())
+	stats, err := s.s.GetFuryaStats(r.Context())
 	if err != nil {
 		api.WriteInternalErrorf(r.Context(), w, "failed to get all users stats: %s", err.Error())
 		return
 	}
 
-	api.WriteOK(w, http.StatusOK, DecentrStats{
+	api.WriteOK(w, http.StatusOK, FuryaStats{
 		ADV: denominateFloat(stats.ADV),
 		DDV: denominate(stats.DDV),
 	})

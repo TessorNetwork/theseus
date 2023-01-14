@@ -12,13 +12,13 @@ import (
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/require"
 
-	"github.com/Decentr-net/ariadne"
-	ariadnemock "github.com/Decentr-net/ariadne/mock"
-	communitytypes "github.com/Decentr-net/decentr/x/community/types"
-	operationstypes "github.com/Decentr-net/decentr/x/operations/types"
+	"github.com/TessorNetwork/ariadne"
+	ariadnemock "github.com/TessorNetwork/ariadne/mock"
+	communitytypes "github.com/TessorNetwork/furya/x/community/types"
+	operationstypes "github.com/TessorNetwork/furya/x/operations/types"
 
-	"github.com/Decentr-net/theseus/internal/storage"
-	storagemock "github.com/Decentr-net/theseus/internal/storage/mock"
+	"github.com/TessorNetwork/theseus/internal/storage"
+	storagemock "github.com/TessorNetwork/theseus/internal/storage/mock"
 )
 
 var errTest = errors.New("test")
@@ -53,10 +53,10 @@ func TestBlockchain_Run_Error(t *testing.T) {
 
 func TestBlockchain_processBlockFunc(t *testing.T) {
 	timestamp := time.Now()
-	owner, err := sdk.AccAddressFromBech32("decentr1u9slwz3sje8j94ccpwlslflg0506yc8y2ylmtz")
+	owner, err := sdk.AccAddressFromBech32("furya1u9slwz3sje8j94ccpwlslflg0506yc8y2ylmtz")
 	require.NoError(t, err)
 
-	owner2, err := sdk.AccAddressFromBech32("decentr1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz")
+	owner2, err := sdk.AccAddressFromBech32("furya1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz")
 	require.NoError(t, err)
 
 	tt := []struct {
@@ -79,7 +79,7 @@ func TestBlockchain_processBlockFunc(t *testing.T) {
 			expect: func(s *storagemock.MockStorage) {
 				s.EXPECT().CreatePost(gomock.Any(), &storage.CreatePostParams{
 					UUID:         "1234",
-					Owner:        "decentr1u9slwz3sje8j94ccpwlslflg0506yc8y2ylmtz",
+					Owner:        "furya1u9slwz3sje8j94ccpwlslflg0506yc8y2ylmtz",
 					Title:        "title",
 					Category:     communitytypes.Category_CATEGORY_WORLD_NEWS,
 					PreviewImage: "url",
@@ -112,14 +112,14 @@ func TestBlockchain_processBlockFunc(t *testing.T) {
 
 				s.EXPECT().AddPDV(gomock.Any(), owner.String(), int64(-2), timestamp).Return(nil)
 
-				s.EXPECT().GetPost(gomock.Any(), storage.PostID{Owner: "decentr1u9slwz3sje8j94ccpwlslflg0506yc8y2ylmtz", UUID: "1234"}).Return(&storage.Post{}, nil)
+				s.EXPECT().GetPost(gomock.Any(), storage.PostID{Owner: "furya1u9slwz3sje8j94ccpwlslflg0506yc8y2ylmtz", UUID: "1234"}).Return(&storage.Post{}, nil)
 
 				s.EXPECT().SetLike(
 					gomock.Any(),
-					storage.PostID{Owner: "decentr1u9slwz3sje8j94ccpwlslflg0506yc8y2ylmtz", UUID: "1234"},
+					storage.PostID{Owner: "furya1u9slwz3sje8j94ccpwlslflg0506yc8y2ylmtz", UUID: "1234"},
 					communitytypes.LikeWeight_LIKE_WEIGHT_DOWN,
 					timestamp,
-					"decentr1u9slwz3sje8j94ccpwlslflg0506yc8y2ylmtz",
+					"furya1u9slwz3sje8j94ccpwlslflg0506yc8y2ylmtz",
 				)
 			},
 		},
@@ -132,9 +132,9 @@ func TestBlockchain_processBlockFunc(t *testing.T) {
 			},
 			expect: func(s *storagemock.MockStorage) {
 				s.EXPECT().DeletePost(gomock.Any(),
-					storage.PostID{Owner: "decentr1u9slwz3sje8j94ccpwlslflg0506yc8y2ylmtz", UUID: "1234"},
+					storage.PostID{Owner: "furya1u9slwz3sje8j94ccpwlslflg0506yc8y2ylmtz", UUID: "1234"},
 					timestamp,
-					"decentr1u9slwz3sje8j94ccpwlslflg0506yc8y2ylmtz",
+					"furya1u9slwz3sje8j94ccpwlslflg0506yc8y2ylmtz",
 				)
 			},
 		},
@@ -165,11 +165,11 @@ func TestBlockchain_processBlockFunc(t *testing.T) {
 				Rewards: []operationstypes.Reward{
 					{
 						Receiver: owner.String(),
-						Reward:   sdk.DecProto{Dec: sdk.NewDecWithPrec(100, 6)},
+						Reward:   sdk.FurProto{Fur: sdk.NewDecWithPrec(100, 6)},
 					},
 					{
 						Receiver: owner2.String(),
-						Reward:   sdk.DecProto{Dec: sdk.NewDecWithPrec(10, 6)},
+						Reward:   sdk.FurProto{Fur: sdk.NewDecWithPrec(10, 6)},
 					},
 				},
 			},

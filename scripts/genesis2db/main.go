@@ -9,8 +9,8 @@ import (
 	"os"
 	"time"
 
-	communitytypes "github.com/Decentr-net/decentr/x/community/types"
-	tokentypes "github.com/Decentr-net/decentr/x/token/types"
+	communitytypes "github.com/TessorNetwork/furya/x/community/types"
+	tokentypes "github.com/TessorNetwork/furya/x/token/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/golang-migrate/migrate/v4"
@@ -20,9 +20,9 @@ import (
 	_ "github.com/lib/pq"
 	"github.com/sirupsen/logrus"
 
-	_ "github.com/Decentr-net/theseus/internal/consumer/blockchain"
-	"github.com/Decentr-net/theseus/internal/storage"
-	"github.com/Decentr-net/theseus/internal/storage/postgres"
+	_ "github.com/TessorNetwork/theseus/internal/consumer/blockchain"
+	"github.com/TessorNetwork/theseus/internal/storage"
+	"github.com/TessorNetwork/theseus/internal/storage/postgres"
 )
 
 var opts = struct {
@@ -75,7 +75,7 @@ func main() {
 	logrus.Info("import token")
 	i := 0
 	for k, v := range g.AppState.Token.Balances {
-		if err := s.AddPDV(context.Background(), k, v.Dec.Sub(sdk.OneDec()).TruncateInt64()*storage.PDVDenominator, t); err != nil {
+		if err := s.AddPDV(context.Background(), k, v.Fur.Sub(sdk.OneDec()).TruncateInt64()*storage.PDVDenominator, t); err != nil {
 			logrus.WithError(err).Fatal("failed to put token into db")
 		}
 

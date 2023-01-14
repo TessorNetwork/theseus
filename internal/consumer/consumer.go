@@ -4,12 +4,12 @@ package consumer
 import (
 	"context"
 
-	"github.com/Decentr-net/go-api/health"
+	"github.com/TessorNetwork/go-api/health"
 )
 
 //go:generate mockgen -destination=./mock/consumer.go -package=consumer -source=consumer.go
 
-// Consumer consumes blocks from decentr blockchain.
+// Consumer consumes blocks from furya blockchain.
 type Consumer interface {
 	health.Pinger
 

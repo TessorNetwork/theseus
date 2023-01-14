@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"time"
 
-	community "github.com/Decentr-net/decentr/x/community/types"
+	community "github.com/TessorNetwork/furya/x/community/types"
 )
 
 //go:generate mockgen -destination=./mock/storage.go -package=mock -source=storage.go
@@ -41,7 +41,7 @@ type Storage interface {
 	GetProfileStats(ctx context.Context, addr ...string) ([]*ProfileStats, error)
 	GetPostStats(ctx context.Context, id ...PostID) (map[PostID]PostStats, error)
 
-	GetDecentrStats(ctx context.Context) (*DecentrStats, error)
+	GetFuryaStats(ctx context.Context) (*FuryaStats, error)
 	GetDDVStats(ctx context.Context) ([]*DDVStatsItem, error)
 
 	ResetAccount(ctx context.Context, owner string) error
@@ -126,8 +126,8 @@ type ProfileStats struct {
 	Stats      PostStats
 }
 
-// DecentrStats represents all users stats.
-type DecentrStats struct {
+// FuryaStats represents all users stats.
+type FuryaStats struct {
 	ADV float64 // Average earned pdv
 	DDV int64   // Whole earned pdv
 }

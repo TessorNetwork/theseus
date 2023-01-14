@@ -14,9 +14,9 @@ import (
 	"github.com/lib/pq"
 	"github.com/sirupsen/logrus"
 
-	community "github.com/Decentr-net/decentr/x/community/types"
+	community "github.com/TessorNetwork/furya/x/community/types"
 
-	"github.com/Decentr-net/theseus/internal/storage"
+	"github.com/TessorNetwork/theseus/internal/storage"
 )
 
 var log = logrus.WithField("layer", "storage").WithField("package", "postgres")
@@ -459,7 +459,7 @@ func (s pg) AddPDV(ctx context.Context, address string, updv int64, timestamp ti
 	return nil
 }
 
-func (s pg) GetDecentrStats(ctx context.Context) (*storage.DecentrStats, error) {
+func (s pg) GetFuryaStats(ctx context.Context) (*storage.FuryaStats, error) {
 	var statsDTO struct {
 		DDV int64   `db:"ddv"`
 		ADV float64 `db:"adv"`
@@ -475,7 +475,7 @@ func (s pg) GetDecentrStats(ctx context.Context) (*storage.DecentrStats, error) 
 		return nil, fmt.Errorf("failed to select: %w", err)
 	}
 
-	return &storage.DecentrStats{
+	return &storage.FuryaStats{
 		ADV: statsDTO.ADV,
 		DDV: statsDTO.DDV,
 	}, nil

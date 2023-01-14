@@ -9,13 +9,13 @@ import (
 
 	"github.com/sirupsen/logrus"
 
-	"github.com/Decentr-net/ariadne"
-	"github.com/Decentr-net/decentr/config"
-	communitytypes "github.com/Decentr-net/decentr/x/community/types"
-	operationstypes "github.com/Decentr-net/decentr/x/operations/types"
+	"github.com/TessorNetwork/ariadne"
+	"github.com/TessorNetwork/furya/config"
+	communitytypes "github.com/TessorNetwork/furya/x/community/types"
+	operationstypes "github.com/TessorNetwork/furya/x/operations/types"
 
-	"github.com/Decentr-net/theseus/internal/consumer"
-	"github.com/Decentr-net/theseus/internal/storage"
+	"github.com/TessorNetwork/theseus/internal/consumer"
+	"github.com/TessorNetwork/theseus/internal/storage"
 )
 
 // nolint:gochecknoinits
@@ -189,7 +189,7 @@ func processMsgUnfollow(ctx context.Context, s storage.Storage, msg communitytyp
 
 func processDistributeRewards(ctx context.Context, s storage.Storage, timestamp time.Time, msg *operationstypes.MsgDistributeRewards) error {
 	for _, v := range msg.Rewards {
-		if err := s.AddPDV(ctx, v.Receiver, v.Reward.Dec.MulInt64(storage.PDVDenominator).TruncateInt64(), timestamp); err != nil {
+		if err := s.AddPDV(ctx, v.Receiver, v.Reward.Fur.MulInt64(storage.PDVDenominator).TruncateInt64(), timestamp); err != nil {
 			return fmt.Errorf("failed to add pdv: %w", err)
 		}
 	}

@@ -24,9 +24,9 @@ import (
 	"github.com/testcontainers/testcontainers-go"
 	"github.com/testcontainers/testcontainers-go/wait"
 
-	community "github.com/Decentr-net/decentr/x/community/types"
+	community "github.com/TessorNetwork/furya/x/community/types"
 
-	"github.com/Decentr-net/theseus/internal/storage"
+	"github.com/TessorNetwork/theseus/internal/storage"
 )
 
 var (
@@ -664,7 +664,7 @@ func TestPg_AddPDV(t *testing.T) {
 	require.NoError(t, s.AddPDV(ctx, "addr", 10, time.Now()))
 }
 
-func TestPg_GetDecentrStats(t *testing.T) {
+func TestPg_GetFuryaStats(t *testing.T) {
 	defer cleanup(t)
 
 	today := time.Now().UTC()
@@ -676,9 +676,9 @@ func TestPg_GetDecentrStats(t *testing.T) {
 	require.NoError(t, s.AddPDV(ctx, "addr", 10, yesterday))
 	require.NoError(t, s.AddPDV(ctx, "addr", 10, monthAgo))
 
-	stats, err := s.GetDecentrStats(ctx)
+	stats, err := s.GetFuryaStats(ctx)
 	require.NoError(t, err)
-	assert.Equal(t, &storage.DecentrStats{
+	assert.Equal(t, &storage.FuryaStats{
 		ADV: 1000010,
 		DDV: 20,
 	}, stats)

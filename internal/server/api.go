@@ -1,7 +1,7 @@
 package server
 
 import (
-	community "github.com/Decentr-net/decentr/x/community/types"
+	community "github.com/TessorNetwork/furya/x/community/types"
 )
 
 const maxLimit = 100
@@ -63,9 +63,9 @@ type DDVStats struct {
 	Stats []StatsItem `json:"stats"`
 }
 
-// DecentrStats ...
+// FuryaStats ...
 // swagger:model
-type DecentrStats struct {
+type FuryaStats struct {
 	ADV float64 `json:"adv"`
 	DDV float64 `json:"ddv"`
 }

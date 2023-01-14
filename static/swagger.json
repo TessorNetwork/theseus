@@ -88,19 +88,19 @@
             "in": "query"
           },
           {
-            "example": "decentr1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz",
+            "example": "furya1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz",
             "description": "filters posts by owner",
             "name": "owner",
             "in": "query"
           },
           {
-            "example": "decentr1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz",
+            "example": "furya1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz",
             "description": "filters posts by one who liked its",
             "name": "likedBy",
             "in": "query"
           },
           {
-            "example": "decentr1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz",
+            "example": "furya1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz",
             "description": "filters post by owners who followed by followedBy",
             "name": "followedBy",
             "in": "query"
@@ -114,7 +114,7 @@
             "in": "query"
           },
           {
-            "example": "decentr1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz/df870e39-6fcb-11eb-9461-0242ac11000b",
+            "example": "furya1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz/df870e39-6fcb-11eb-9461-0242ac11000b",
             "description": "sets not-including bound for list by post id(`owner/uuid`)",
             "name": "after",
             "in": "query"
@@ -132,7 +132,7 @@
             "in": "query"
           },
           {
-            "example": "decentr1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz",
+            "example": "furya1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz",
             "description": "adds liked flag to response",
             "name": "requestedBy",
             "in": "query"
@@ -194,7 +194,7 @@
             "required": true
           },
           {
-            "example": "decentr1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz",
+            "example": "furya1ltx6yymrs8eq4nmnhzfzxj6tspjuymh8mgd6gz",
             "description": "adds liked flag to response",
             "name": "requestedBy",
             "in": "query"
@@ -276,13 +276,13 @@
         "tags": [
           "Profiles"
         ],
-        "summary": "Returns decentr stats.",
-        "operationId": "GetDecentrStats",
+        "summary": "Returns furya stats.",
+        "operationId": "GetFuryaStats",
         "responses": {
           "200": {
             "description": "Stats",
             "schema": {
-              "$ref": "#/definitions/DecentrStats"
+              "$ref": "#/definitions/FuryaStats"
             }
           },
           "500": {
@@ -345,7 +345,7 @@
     "Category": {
       "type": "integer",
       "format": "int32",
-      "x-go-package": "github.com/Decentr-net/decentr/x/community/types"
+      "x-go-package": "github.com/TessorNetwork/furya/x/community/types"
     },
     "DDVStats": {
       "type": "object",
@@ -364,11 +364,11 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/Decentr-net/theseus/internal/server"
+      "x-go-package": "github.com/TessorNetwork/theseus/internal/server"
     },
-    "DecentrStats": {
+    "FuryaStats": {
       "type": "object",
-      "title": "DecentrStats ...",
+      "title": "FuryaStats ...",
       "properties": {
         "adv": {
           "type": "number",
@@ -381,7 +381,7 @@
           "x-go-name": "DDV"
         }
       },
-      "x-go-package": "github.com/Decentr-net/theseus/internal/server"
+      "x-go-package": "github.com/TessorNetwork/theseus/internal/server"
     },
     "Error": {
       "type": "object",
@@ -392,7 +392,7 @@
           "x-go-name": "Error"
         }
       },
-      "x-go-package": "github.com/Decentr-net/go-api"
+      "x-go-package": "github.com/TessorNetwork/go-api"
     },
     "GetPostResponse": {
       "type": "object",
@@ -412,12 +412,12 @@
           "x-go-name": "Stats"
         }
       },
-      "x-go-package": "github.com/Decentr-net/theseus/internal/server"
+      "x-go-package": "github.com/TessorNetwork/theseus/internal/server"
     },
     "LikeWeight": {
       "type": "integer",
       "format": "int32",
-      "x-go-package": "github.com/Decentr-net/decentr/x/community/types"
+      "x-go-package": "github.com/TessorNetwork/furya/x/community/types"
     },
     "ListPostsResponse": {
       "type": "object",
@@ -450,7 +450,7 @@
           "x-go-name": "Stats"
         }
       },
-      "x-go-package": "github.com/Decentr-net/theseus/internal/server"
+      "x-go-package": "github.com/TessorNetwork/theseus/internal/server"
     },
     "Post": {
       "type": "object",
@@ -507,7 +507,7 @@
           "x-go-name": "UUID"
         }
       },
-      "x-go-package": "github.com/Decentr-net/theseus/internal/server"
+      "x-go-package": "github.com/TessorNetwork/theseus/internal/server"
     },
     "ProfileStats": {
       "type": "object",
@@ -526,7 +526,7 @@
           "x-go-name": "Stats"
         }
       },
-      "x-go-package": "github.com/Decentr-net/theseus/internal/server"
+      "x-go-package": "github.com/TessorNetwork/theseus/internal/server"
     },
     "SharePost": {
       "type": "object",
@@ -545,7 +545,7 @@
           "x-go-name": "UUID"
         }
       },
-      "x-go-package": "github.com/Decentr-net/theseus/internal/server"
+      "x-go-package": "github.com/TessorNetwork/theseus/internal/server"
     },
     "StatsItem": {
       "description": "Key is RFC3999 date, value is PDV.",
@@ -562,7 +562,7 @@
           "x-go-name": "Value"
         }
       },
-      "x-go-package": "github.com/Decentr-net/theseus/internal/server"
+      "x-go-package": "github.com/TessorNetwork/theseus/internal/server"
     }
   }
 }
