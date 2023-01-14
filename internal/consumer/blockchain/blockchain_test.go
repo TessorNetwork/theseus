@@ -165,11 +165,11 @@ func TestBlockchain_processBlockFunc(t *testing.T) {
 				Rewards: []operationstypes.Reward{
 					{
 						Receiver: owner.String(),
-						Reward:   sdk.FurProto{Fur: sdk.NewDecWithPrec(100, 6)},
+						Reward:   sdk.FurProto{Fur: sdk.NewFurWithPrec(100, 6)},
 					},
 					{
 						Receiver: owner2.String(),
-						Reward:   sdk.FurProto{Fur: sdk.NewDecWithPrec(10, 6)},
+						Reward:   sdk.FurProto{Fur: sdk.NewFurWithPrec(10, 6)},
 					},
 				},
 			},

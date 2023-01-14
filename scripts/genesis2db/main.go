@@ -75,7 +75,7 @@ func main() {
 	logrus.Info("import token")
 	i := 0
 	for k, v := range g.AppState.Token.Balances {
-		if err := s.AddPDV(context.Background(), k, v.Fur.Sub(sdk.OneDec()).TruncateInt64()*storage.PDVDenominator, t); err != nil {
+		if err := s.AddPDV(context.Background(), k, v.Fur.Sub(sdk.OneFur()).TruncateInt64()*storage.PDVDenominator, t); err != nil {
 			logrus.WithError(err).Fatal("failed to put token into db")
 		}
 
