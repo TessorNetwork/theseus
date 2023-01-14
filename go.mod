@@ -1,12 +1,12 @@
-module github.com/TessorNetwork/theseus
+module github.com/TessorNetwork/furya
 
 go 1.19
 
 require (
-	github.com/TessorNetwork/ariadne v1.2.0
-	github.com/TessorNetwork/fury v0.1.0-furya.1
-	github.com/TessorNetwork/go-api v0.1.0
-	github.com/TessorNetwork/logrus v0.7.2
+	github.com/Decentr-net/ariadne v1.2.0
+	github.com/Decentr-net/decentr v1.6.2
+	github.com/Decentr-net/go-api v0.1.0
+	github.com/Decentr-net/logrus v0.7.2
 	github.com/cosmos/cosmos-sdk v0.45.9
 	github.com/go-chi/chi v4.1.2+incompatible
 	github.com/go-chi/cors v1.1.1
